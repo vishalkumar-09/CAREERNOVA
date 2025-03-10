@@ -7,12 +7,10 @@ import {
     DropdownMenu, 
     DropdownMenuTrigger, 
     DropdownMenuContent,
-    DropdownMenuLabel, 
-    DropdownMenuSeparator,
     DropdownMenuItem 
   } from "@/components/ui/dropdown-menu";
   
-import {SignedOut, SignedIn, SignInButton, SignUpButton, UserButton} from "@clerk/nextjs";
+import {SignedOut, SignedIn, SignInButton, UserButton} from "@clerk/nextjs";
 const Header = () => {
   return (
     <header className="fixed top-0 w-full border-black bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60">
@@ -58,13 +56,6 @@ const Header = () => {
                     </DropdownMenuItem>
                 </DropdownMenuContent>
                 </DropdownMenu>
-                </SignedIn>
-                <SignedOut>
-                    <SignInButton>
-                        <Button variant="outline">Sign In</Button>
-                    </SignInButton>
-                </SignedOut>
-                <SignedIn>
                     <UserButton 
                         appearance={{
                             elements:{
@@ -76,6 +67,11 @@ const Header = () => {
                         afterSignOutUrl="/"
                     />
                 </SignedIn>
+                <SignedOut>
+                    <SignInButton redirecturl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL}>
+                        <Button variant="outline">Sign In</Button>
+                    </SignInButton>
+                </SignedOut>
             </div>
         </nav>
     </header>
