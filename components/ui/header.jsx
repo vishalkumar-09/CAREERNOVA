@@ -30,12 +30,12 @@ const Header = () => {
                     </Link>
                 <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <Button className="bg-white text-black">
+                    <Button className="bg-white text-black hover:text-back">
                             <StarsIcon className="h-4 w-4"/>
                             <span className="hidden md:block">Growth Tools</span>
                             <ChevronDown className="h-4 w-4"/>
                     </Button></DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white text-black">
+                <DropdownMenuContent className="bg-white text-black hover:text-back">
                     <DropdownMenuItem>
                         <Link href={'/resume'} className="flex items-center gap-2">
                         <FileText className="h-4 w-4"/>
