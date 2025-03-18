@@ -1,100 +1,119 @@
+// Prisma Client generator - This tells Prisma to generate the client for JavaScript
 generator client {
   provider = "prisma-client-js"
 }
 
+// Database connection - Uses PostgreSQL with credentials from the .env file
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL") 
 }
 
+// User model - Stores user-related data
 model User {
-  id            String    @id @default(uuid())
-  clerkUserId   String    @unique // clerk user id
-  email         String    @unique
-  name          String?
-  imageUrl      String?
-  industry      String?    // Combined industry-subindustry (e.g., "tech-software-development")
-  industryInsight IndustryInsight? @relation(fields: [industry], references: [industry])
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  // Profile fields
-  bio           String?
-  experience    Int?      // Years of experience
+  id            String    @id @default(uuid())  // Unique ID for each user
+  clerkUserId   String    @unique  // Unique ID from Clerk authentication
+  email         String    @unique  // User's email (must be unique)
+  name          String?   // Optional name
+  imageUrl      String?   // Optional profile image URL
+  industry      String?   // Industry the user belongs to (optional)
   
+  // Relationship with IndustryInsight model
+  industryInsight IndustryInsight? @relation(fields: [industry], references: [industry]) 
+
+  createdAt     DateTime  @default(now())  // Auto timestamp when created
+  updatedAt     DateTime  @updatedAt  // Auto timestamp when updated
+
+  // Additional profile fields
+  bio           String?   // Optional bio
+  experience    Int?      // Years of experience
+
   // Relations
   skills        String[]  // Array of skills
-  assessments   Assessment[]
-  resume        Resume?
-  coverLetter   CoverLetter[]
+  assessments   Assessment[]  // User's assessments
+  resume        Resume?  // One resume per user
+  coverLetter   CoverLetter[]  // Multiple cover letters per user
 }
 
+// Assessment model - Stores quiz/assessment results
 model Assessment {
-  id            String    @id @default(cuid())
-  userId        String
-  user          User      @relation(fields: [userId], references: [id])
-  quizScore     Float     // Overall quiz score
-  questions     Json[]    // Array of {question, answer, userAnswer, isCorrect}
-  category      String    // "Technical", "Behavioral", etc.
-  improvementTip String?  // AI-generated improvement tip
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id            String    @id @default(cuid())  // Unique ID
+  userId        String  // Foreign key to User
+  user          User    @relation(fields: [userId], references: [id]) // Relation to User model
+  quizScore     Float   // Score of the quiz
+  questions     Json[]  // Array of questions and answers
+  category      String  // Type of assessment (e.g., "Technical", "Behavioral")
+  improvementTip String?  // AI-generated tip for improvement
 
-  @@index([userId])
+  createdAt     DateTime  @default(now())  // Timestamp when created
+  updatedAt     DateTime  @updatedAt  // Auto-update timestamp when modified
+
+  @@index([userId])  // Index on userId for faster lookups
 }
 
+// Resume model - Stores resume data for a user
 model Resume {
-  id          String    @id @default(cuid())
-  userId      String    @unique    // One resume per user
-  user        User      @relation(fields: [userId], references: [id])
-  content     String    @db.Text // Markdown content
-  atsScore    Float?
-  feedback    String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id          String    @id @default(cuid())  // Unique ID
+  userId      String    @unique  // Each user has one resume
+  user        User      @relation(fields: [userId], references: [id]) // Relation to User model
+  content     String    @db.Text  // Resume content in Markdown format
+  atsScore    Float?  // ATS (Applicant Tracking System) score
+  feedback    String?  // Feedback on the resume
+
+  createdAt   DateTime  @default(now())  // Timestamp when created
+  updatedAt   DateTime  @updatedAt  // Auto-update timestamp
+
 }
 
+// Cover Letter model - Stores cover letter data
 model CoverLetter {
-  id              String    @id @default(cuid())
-  userId          String
-  user            User      @relation(fields: [userId], references: [id])
-  content         String    // Markdown content
-  jobDescription  String?
-  companyName     String    // Name of the company applying to
-  jobTitle        String    // Position applying for
-  status          String    @default("draft") // draft, completed
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  id              String    @id @default(cuid())  // Unique ID
+  userId          String  // Foreign key to User
+  user            User      @relation(fields: [userId], references: [id])  // Relation to User model
+  content         String  // Cover letter content in Markdown format
+  jobDescription  String?  // Job description (optional)
+  companyName     String  // Company name applying to
+  jobTitle        String  // Job title applying for
+  status          String    @default("draft")  // Status: "draft" or "completed"
 
-  @@index([userId])
+  createdAt       DateTime  @default(now())  // Timestamp when created
+  updatedAt       DateTime  @updatedAt  // Auto-update timestamp
+
+  @@index([userId])  // Index for faster lookups
 }
 
-// Combined Industry Trends and Salary Insights
+// IndustryInsight model - Stores insights & salary trends for industries
 model IndustryInsight {
-  id            String    @id @default(cuid())
-  industry      String    @unique  // The industry this data belongs to (e.g., "tech-software-development")
-  
-  // Users in this industry
-  users         User[]
-  
-  // Salary data
-  salaryRanges  Json[]    // Array of { role: string, min: float, max: float, median: float, location: string? }
-  
-  // Industry trends
-  growthRate    Float     // Industry growth rate
-  demandLevel   String    // "High", "Medium", "Low"
-  topSkills     String[]  // Most in-demand skills
-  
-  // Market conditions
-  marketOutlook String    // "Positive", "Neutral", "Negative"
-  keyTrends     String[]  // Array of current industry trends
-  
-  // Learning suggestions
-  recommendedSkills String[]  // Skills recommended for the industry
-  
-  lastUpdated   DateTime  @default(now())
+  id            String    @id @default(cuid())  // Unique ID
+  industry      String    @unique  // Unique industry name (e.g., "tech-software-development")
+
+  users         User[]  // Users associated with this industry
+
+  salaryRanges  Json[]  // Salary data: { role, min, max, median, location }
+  growthRate    Float   // Industry growth rate
+  demandLevel   DemandLevel  // Enum: "High", "Medium", "Low"
+  topSkills     String[]  // Most in-demand skills in this industry
+
+  marketOutlook MarketOutlook  // Enum: "Positive", "Neutral", "Negative"
+  keyTrends     String[]  // Key trends in the industry
+  recommendedSkills String[]  // Suggested skills for professionals
+
+  lastUpdated   DateTime  @default(now())  // Timestamp of last update
   nextUpdate    DateTime  // Scheduled update time
 
-  @@index([industry])
-  
+  @@index([industry])  // Index for quick searches
+}
+
+// Demand Level Enum - Indicates job demand in an industry
+enum DemandLevel {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+// Market Outlook Enum - Indicates market trend for an industry
+enum MarketOutlook {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
 }
