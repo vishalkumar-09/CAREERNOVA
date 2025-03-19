@@ -111,12 +111,16 @@ enum DemandLevel {
   LOW
   High
   Medium
-  low
+  Low
 }
 
 // Market Outlook Enum - Indicates market trend for an industry
 enum MarketOutlook {
+  Positive
+  Neutral
+  Negative
   POSITIVE
   NEUTRAL
   NEGATIVE
 }
+

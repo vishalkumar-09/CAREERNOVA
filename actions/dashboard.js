@@ -16,9 +16,9 @@ export const generateAIInsights=async(industry)=>{
               { "role": "string", "min": number, "max": number, "median": number, "location": "string" }
             ],
             "growthRate": number,
-            "demandLevel": "High" | "Medium" | "Low",
+            "demandLevel": "HIGH" | "MEDIUM" | "LOW",
             "topSkills": ["skill1", "skill2"],
-            "marketOutlook": "Positive" | "Neutral" | "Negative",
+            "marketOutlook": "POSITIVE" | "NEUTRAL" | "NEGATIVE",
             "keyTrends": ["trend1", "trend2"],
             "recommendedSkills": ["skill1", "skill2"]
           }
@@ -37,27 +37,36 @@ export const generateAIInsights=async(industry)=>{
 
         return JSON.parse(cleanedText);
 };
-export async function getIndustryInsight() {
+export async function getIndustryInsights() {
     const { userId } = await auth();
-        if (!userId) throw new Error("Unauthorized");
-    
-        const user = await db.user.findUnique({
-            where: {
-                clerkUserId: userId,
-            },
-        });
-    
-        if (!user) throw new Error("User not found");
-        if(!user.industryInsight){
-            const insights= await generateAIInsights(user.industry);
-            const industryInsight = await db.industryInsight.create({
-                data: {
-                    industry: user.industry,
-                    ...insights,
-                    nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-                },
-            });
-            return industryInsight;
-        }
-        return user.industryInsight;
+    if (!userId) throw new Error("Unauthorized");
+
+    const user = await db.user.findUnique({
+        where: { clerkUserId: userId },
+    });
+
+    if (!user) throw new Error("User not found");
+
+    let industryInsight = await db.industryInsight.findUnique({
+        where: { industry: user.industry },
+    });
+
+    if (industryInsight) {
+        return industryInsight;
+    }
+
+    // Generate AI insights if no industryInsight exists
+    const insights = await generateAIInsights(user.industry);
+
+    industryInsight = await db.industryInsight.create({
+        data: {
+            industry: user.industry,
+            ...insights,
+            demandLevel: insights.demandLevel.toUpperCase(), 
+            marketOutlook: insights.marketOutlook.toUpperCase(),
+            nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+        },
+    });
+
+    return industryInsight;
 }
