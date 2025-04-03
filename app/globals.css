@@ -173,3 +173,7 @@ body {
 .bounce-button.animate-bounce {
   animation: bounce 1s infinite;
 }
+
+html, body {
+  overflow: auto;
+}
