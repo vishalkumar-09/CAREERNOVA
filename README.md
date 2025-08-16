@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+CAREERNOVA-A Career Coach Platform
+A Full Stack AI-powered Career Coach application built with React 19, Next.js 15, Tailwind CSS, Gemini AI, Prisma, NeonDB, Clerk authentication, Inngest, and Shadcn UI.
 
-## Getting Started
+🔥 Features
+Modern Landing Page:
 
-First, run the development server:
+Professional design with scroll animation, feature showcase, user testimonials, FAQ, and statistics.
 
-```bash
+Fully responsive and dark-mode enabled using Shadcn UI and Tailwind CSS.
+
+User Authentication & Onboarding:
+
+Clerk-powered authentication (Google/email).
+
+User profile setup: industry, occupation, experience, skills, professional bio.
+
+Interactive Career Dashboard:
+
+Industry Insights: Weekly-updated dashboard displaying in-demand skills, market growth, salary trends, and recommended skills for selected industries.
+
+Background cron jobs (Inngest) to update trends automatically.
+
+AI Resume Builder:
+
+Build ATS-optimized resumes directly within the app.
+
+AI-powered content generation for work experience, based on Gemini AI.
+
+Download Markdown-formatted resumes as PDFs.
+
+Store and edit resumes; data is persisted in PostgreSQL (NeonDB).
+
+Mock Interview Preparation:
+
+Role-based mock interviews: Gemini AI generates tailored questions.
+
+Performance tracking, improvement tips, answer explanations.
+
+Quiz history, stats, and visualizations via Recharts.
+
+AI Cover Letter Generator:
+
+Auto-generate cover letters tailored to job descriptions and user details.
+
+Editable, downloadable, and stored in your profile.
+
+User Management:
+
+Manage and update user profile, authentication sessions, account security features.
+
+Growth Tools Dropdown:
+
+Quick access to Resume Builder, Cover Letter Generator, Interview Prep, and more.
+
+🧑💻 Tech Stack
+Frontend: React 19, Next.js 15, Tailwind CSS, Shadcn UI.
+
+Authentication: Clerk.
+
+Database: NeonDB (PostgreSQL), Prisma ORM.
+
+AI Integration: Gemini AI API.
+
+Background Tasks: Inngest.
+
+Charts: Recharts.
+
+Forms & Validation: React Hook Form, Zod.
+
+🚀 Getting Started
+Clone the repo & install dependencies:
+
+bash
+git clone https://github.com/piyush-eon/ai-career-coach.git
+cd ai-career-coach
+npm install
+Add environment variables: .env file for database, Clerk, Gemini AI, Inngest, etc.
+
+Run development server:
+
+bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visit http://localhost:3000 to start using CAREERNOVA.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🛠️ Notable Implementations
+Shadcn UI pre-built/components for a scalable and customizable design.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Dark Mode theme support.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Protected Routes: Middleware for access control/guards.
 
-## Learn More
+Custom Sign-in/Sign-up pages: Seamless integration with Clerk.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Background Cron Jobs: Weekly tasks for updating industry insights using Inngest.
