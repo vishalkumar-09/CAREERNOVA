@@ -1,94 +1,102 @@
-CAREERNOVA-A Career Coach Platform
-A Full Stack AI-powered Career Coach application built with React 19, Next.js 15, Tailwind CSS, Gemini AI, Prisma, NeonDB, Clerk authentication, Inngest, and Shadcn UI.
+# 🚀 CAREERNOVA — AI-Powered Career Coach Platform  
 
-🔥 Features
-Modern Landing Page:
+[![React](https://img.shields.io/badge/React-19-blue?logo=react)]()  
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)]()  
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-38B2AC?logo=tailwind-css)]()  
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma)]()  
+[![PostgreSQL](https://img.shields.io/badge/NeonDB-Postgres-4169E1?logo=postgresql)]()  
+[![Clerk](https://img.shields.io/badge/Auth-Clerk-6C47FF?logo=clerk)]()  
+[![AI](https://img.shields.io/badge/AI-Gemini-FF6F00?logo=google)]()  
 
-Professional design with scroll animation, feature showcase, user testimonials, FAQ, and statistics.
+> A **Full Stack AI-powered Career Coach** that helps you **build resumes, prepare for interviews, track industry insights, and accelerate your career growth**.  
 
-Fully responsive and dark-mode enabled using Shadcn UI and Tailwind CSS.
+---
 
-User Authentication & Onboarding:
+## ✨ Features  
 
-Clerk-powered authentication (Google/email).
+### 🌐 Modern Landing Page  
+- Professional design with **scroll animations, testimonials, FAQs, and stats**  
+- **Dark mode** & fully responsive using **Shadcn UI + TailwindCSS**  
 
-User profile setup: industry, occupation, experience, skills, professional bio.
+### 🔑 Authentication & Onboarding  
+- **Clerk-powered login** (Google/Email)  
+- User profile setup with **industry, occupation, skills, bio**  
 
-Interactive Career Dashboard:
+### 📊 Career Dashboard  
+- **Industry insights**: In-demand skills, salary trends, market growth  
+- **Auto-updated** via **Inngest background jobs**  
 
-Industry Insights: Weekly-updated dashboard displaying in-demand skills, market growth, salary trends, and recommended skills for selected industries.
+### 📄 AI Resume Builder  
+- Create **ATS-optimized resumes** inside the app  
+- **Gemini AI-powered experience writing**  
+- **Markdown to PDF export**  
+- Persistent storage with **NeonDB (PostgreSQL)**  
 
-Background cron jobs (Inngest) to update trends automatically.
+### 🎤 Mock Interviews  
+- Role-based **AI-generated questions**  
+- **Performance tracking** & detailed feedback  
+- Quiz history with **visualizations via Recharts**  
 
-AI Resume Builder:
+### 📝 AI Cover Letter Generator  
+- Generate **job-specific cover letters**  
+- Fully **editable, downloadable, and stored** in profile  
 
-Build ATS-optimized resumes directly within the app.
+### 👤 User Management  
+- Profile & security settings  
+- Session management  
 
-AI-powered content generation for work experience, based on Gemini AI.
+### 📈 Growth Tools  
+- Dropdown access to **Resume Builder, Cover Letter Generator, Interview Prep & more**  
 
-Download Markdown-formatted resumes as PDFs.
+---
 
-Store and edit resumes; data is persisted in PostgreSQL (NeonDB).
+## 🧑‍💻 Tech Stack  
 
-Mock Interview Preparation:
+- **Frontend:** React 19, Next.js 15, Tailwind CSS, Shadcn UI  
+- **Authentication:** Clerk  
+- **Database:** NeonDB (PostgreSQL) + Prisma ORM  
+- **AI Integration:** Gemini AI API  
+- **Background Jobs:** Inngest  
+- **Charts & Visuals:** Recharts  
+- **Forms & Validation:** React Hook Form + Zod  
 
-Role-based mock interviews: Gemini AI generates tailored questions.
+---
 
-Performance tracking, improvement tips, answer explanations.
+## ⚡ Getting Started  
 
-Quiz history, stats, and visualizations via Recharts.
-
-AI Cover Letter Generator:
-
-Auto-generate cover letters tailored to job descriptions and user details.
-
-Editable, downloadable, and stored in your profile.
-
-User Management:
-
-Manage and update user profile, authentication sessions, account security features.
-
-Growth Tools Dropdown:
-
-Quick access to Resume Builder, Cover Letter Generator, Interview Prep, and more.
-
-🧑💻 Tech Stack
-Frontend: React 19, Next.js 15, Tailwind CSS, Shadcn UI.
-
-Authentication: Clerk.
-
-Database: NeonDB (PostgreSQL), Prisma ORM.
-
-AI Integration: Gemini AI API.
-
-Background Tasks: Inngest.
-
-Charts: Recharts.
-
-Forms & Validation: React Hook Form, Zod.
-
-🚀 Getting Started
-Clone the repo & install dependencies:
-
-bash
-git clone https://github.com/piyush-eon/ai-career-coach.git
-cd ai-career-coach
+### 1️⃣ Clone & Install  
+```bash
+git clone https://github.com/vishalkumar-09/CAREERNOVA.git
+cd CAREERNOVA
 npm install
-Add environment variables: .env file for database, Clerk, Gemini AI, Inngest, etc.
+```
+### 2️⃣ Add Environment Variables
 
-Run development server:
+**NeonDB (Postgres)**
 
-bash
-npm run dev
-Visit http://localhost:3000 to start using CAREERNOVA.
+**Clerk**
 
-🛠️ Notable Implementations
-Shadcn UI pre-built/components for a scalable and customizable design.
+**Gemini AI**
 
-Dark Mode theme support.
+**Inngest**
 
-Protected Routes: Middleware for access control/guards.
+### 3️⃣ Run Development Server
+```bash
+npm run dev  
+```
 
-Custom Sign-in/Sign-up pages: Seamless integration with Clerk.
+open → http://localhost:3000
 
-Background Cron Jobs: Weekly tasks for updating industry insights using Inngest.
+### 🛠️ Notable Implementations
+
+✔️ Shadcn UI components for clean design
+
+✔️ Dark Mode support
+
+✔️ Protected Routes with Next.js Middleware
+
+✔️ Custom Auth pages (Clerk)
+
+✔️ Weekly Background Cron Jobs (Inngest)
+
+## 🔥 CAREERNOVA is your AI-powered Career Coach helping you land your dream job 🚀
