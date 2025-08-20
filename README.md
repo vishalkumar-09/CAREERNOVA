@@ -1,4 +1,4 @@
-# 🚀 CAREERNOVA — AI-Powered Career Coach Platform  
+# CAREERNOVA — AI-Powered Career Coach Platform  
 
 [![React](https://img.shields.io/badge/React-19-blue?logo=react)]()  
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)]()  
@@ -12,45 +12,45 @@
 
 ---
 
-## ✨ Features  
+##  Features  
 
-### 🌐 Modern Landing Page  
+###  Modern Landing Page  
 - Professional design with **scroll animations, testimonials, FAQs, and stats**  
 - **Dark mode** & fully responsive using **Shadcn UI + TailwindCSS**  
 
-### 🔑 Authentication & Onboarding  
+###  Authentication & Onboarding  
 - **Clerk-powered login** (Google/Email)  
 - User profile setup with **industry, occupation, skills, bio**  
 
-### 📊 Career Dashboard  
+###  Career Dashboard  
 - **Industry insights**: In-demand skills, salary trends, market growth  
 - **Auto-updated** via **Inngest background jobs**  
 
-### 📄 AI Resume Builder  
+###  AI Resume Builder  
 - Create **ATS-optimized resumes** inside the app  
 - **Gemini AI-powered experience writing**  
 - **Markdown to PDF export**  
 - Persistent storage with **NeonDB (PostgreSQL)**  
 
-### 🎤 Mock Interviews  
+###  Mock Interviews  
 - Role-based **AI-generated questions**  
 - **Performance tracking** & detailed feedback  
 - Quiz history with **visualizations via Recharts**  
 
-### 📝 AI Cover Letter Generator  
+###  AI Cover Letter Generator  
 - Generate **job-specific cover letters**  
 - Fully **editable, downloadable, and stored** in profile  
 
-### 👤 User Management  
+###  User Management  
 - Profile & security settings  
 - Session management  
 
-### 📈 Growth Tools  
+###  Growth Tools  
 - Dropdown access to **Resume Builder, Cover Letter Generator, Interview Prep & more**  
 
 ---
 
-## 🧑‍💻 Tech Stack  
+##  Tech Stack  
 
 - **Frontend:** React 19, Next.js 15, Tailwind CSS, Shadcn UI  
 - **Authentication:** Clerk  
@@ -62,15 +62,15 @@
 
 ---
 
-## ⚡ Getting Started  
+##  Getting Started  
 
-### 1️⃣ Clone & Install  
+### 1️. Clone & Install  
 ```bash
 git clone https://github.com/vishalkumar-09/CAREERNOVA.git
 cd CAREERNOVA
 npm install
 ```
-### 2️⃣ Add Environment Variables
+### 2️. Add Environment Variables
 
 **NeonDB (Postgres)**
 
@@ -80,23 +80,23 @@ npm install
 
 **Inngest**
 
-### 3️⃣ Run Development Server
+### 3️. Run Development Server
 ```bash
 npm run dev  
 ```
 
 open → http://localhost:3000
 
-### 🛠️ Notable Implementations
+###  Notable Implementations
 
-✔️ Shadcn UI components for clean design
+-> Shadcn UI components for clean design
 
-✔️ Dark Mode support
+-> Dark Mode support
 
-✔️ Protected Routes with Next.js Middleware
+-> Protected Routes with Next.js Middleware
 
-✔️ Custom Auth pages (Clerk)
+-> Custom Auth pages (Clerk)
 
-✔️ Weekly Background Cron Jobs (Inngest)
+-> Weekly Background Cron Jobs (Inngest)
 
-## 🔥 CAREERNOVA is your AI-powered Career Coach helping you land your dream job 🚀
+##  CAREERNOVA is your AI-powered Career Coach helping you land your dream job 
